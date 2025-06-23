@@ -25,3 +25,19 @@ Thumbs.db
 # Editor directories and files
 .vscode/
 .idea/
+
+# MCP/Project-specific ignores
+uv.lock
+*.log
+*.db
+*.sqlite3
+*.bak
+*.swp
+*.tmp
+*.cache
+.mypy_cache/
+.pytest_cache/
+*.coverage
+coverage.xml
+.python-version
+*.ipynb_checkpoints/

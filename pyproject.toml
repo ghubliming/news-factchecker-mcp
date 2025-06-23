@@ -1,0 +1,17 @@
+[project]
+name = "factchck"
+version = "0.1.0"
+description = "A Model Context Protocol (MCP) server for automated fact-checking of news headlines using web search and Google Gemini AI. Exposes a tool for verifying the factual accuracy of news claims, suitable for integration with Claude Desktop, the MCP CLI, and other MCP-compatible clients."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [ "mcp>=1.9.4",]
+[[project.authors]]
+name = "Aditya"
+email = "adityapawar327@gmail.com"
+
+[build-system]
+requires = [ "hatchling",]
+build-backend = "hatchling.build"
+
+[project.scripts]
+factchck = "factchck:main"

@@ -1,206 +1,195 @@
 # News Fact-Checker MCP Server
 
-A Model Context Protocol (MCP) server for automated fact-checking of news headlines and retrieving trending news topics using web search and Google Gemini AI. This project exposes tools for verifying the factual accuracy of news claims and for aggregating trending topics, suitable for integration with Claude Desktop, the MCP CLI, and other MCP-compatible clients.
-
----
+A modern Model Context Protocol (MCP) server for fact-checking news headlines using AI analysis and web search.
 
 ## Features
 
-- **Fact-check news headlines** using real-time web search and Gemini AI analysis
-- **Trending topics aggregation**: Get the latest trending news by region (local/India/international)
-- **Structured verdicts**: TRUE, FALSE, PARTIALLY_TRUE, UNVERIFIED, MISLEADING
-- **Evidence summary** and confidence score
-- **Professional, detailed reporting**
-- **Easy integration** with Claude Desktop, MCP CLI, and other clients
+- 🔍 **Fact-Check Headlines**: Verify news claims using Google Gemini AI and web search
+- 📈 **Trending Topics**: Get current trending news from RSS feeds
+- 🤖 **AI-Powered Analysis**: Uses Google Gemini 2.0 Flash for intelligent fact-checking
+- 🌐 **Multi-Source Verification**: Searches multiple sources for comprehensive analysis
+- ⚡ **Modern MCP**: Built with latest MCP conventions using `@mcp.tool` decorators
 
----
+## Quick Start
 
-## Installation
+### Prerequisites
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/adityapawar327/news-factchecker-mcp.git
-   cd news-factchecker-mcp
-   ```
+- Python 3.11 or higher
+- Google Gemini API key
 
-2. **Create and activate a virtual environment (recommended):**
-   ```sh
-   python -m venv .venv
-   # On Windows:
-   .venv\Scripts\activate
-   # On macOS/Linux:
-   source .venv/bin/activate
-   ```
+### Installation
 
-3. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
-
----
-
-## Configuration
-
-This server requires API keys for Google Gemini and (optionally) NewsAPI for enhanced news search and trending topics.
-
-1. **Create a `.env` file in the project root:**
-   ```env
-   GEMINI_API_KEY=your_gemini_api_key_here
-   NEWS_API_KEY=your_newsapi_key_here  # Optional
-   ```
-
-2. **Do NOT commit your `.env` file or API keys to public repositories.**
-
----
-
-## MCP Server Configuration for Claude Desktop
-
-To use this server with Claude Desktop, add the following to your Claude MCP server config file:
-
-```json
-{
-  "mcpServers": {
-    "news-factcheck": {
-      "command": "python",
-      "args": [
-        "src/factchck/news_factcheck.py"
-      ],
-      "env": {
-        "GEMINI_API_KEY": "your_gemini_api_key_here",
-        "NEWS_API_KEY": "your_newsapi_key_here"
-      }
-    }
-  }
-}
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd FactChecker
 ```
 
-- On Windows: Save as `%APPDATA%/Claude/claude_desktop_config.json`
-- On macOS: Save as `~/Library/Application Support/Claude/claude_desktop_config.json`
-- Replace the API keys with your own.
-- Adjust the path in `args` if your project is in a different location.
-- Restart Claude Desktop after saving.
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
----
+3. Set up your API key:
+```bash
+export GEMINI_API_KEY="your_gemini_api_key_here"
+```
+
+4. Run the server:
+```bash
+python -m factchck.news_factcheck
+```
 
 ## Usage
 
-### Run the MCP Server
+### Fact-Check a Headline
 
-```sh
-python src/factchck/news_factcheck.py
-```
-
-The server will start and expose its tools over MCP stdio.
-
----
-
-### Using with Claude Desktop
-
-1. Open Claude Desktop settings and add a new MCP server:
-   - **Command:** `python`
-   - **Arguments:** `src/factchck/news_factcheck.py`
-   - (Set environment variables for API keys as needed)
-2. Restart Claude Desktop. The "Fact Check Headline" and "Get Trending Topics" tools will appear in the tool menu.
-
----
-
-### Using with MCP CLI
-
-List available tools:
-```sh
-mcp tool list --server-stdio "python src/factchck/news_factcheck.py"
-```
-
-Call the fact-check tool:
-```sh
-mcp tool call --server-stdio "python src/factchck/news_factcheck.py" --tool fact_check_headline --args '{"headline": "NASA finds water on the Moon"}'
-```
-
-Call the trending topics tool:
-```sh
-mcp tool call --server-stdio "python src/factchck/news_factcheck.py" --tool get_trending_topics --args '{"location": "international"}'
-```
-
----
-
-## Example Output
-
-### Fact-Check Headline
-
-```
-✅ FINAL VERDICT: TRUE (98% ACCURATE)
-📰 HEADLINE ANALYZED:
-"NASA finds water on the Moon"
-
-📊 VERIFICATION METRICS:
-• Truthfulness Score: 98%
-• AI Confidence Level: 98.0%
-• Sources Analyzed: 3
-• Analysis Date: 2025-06-24
-
-🎯 DETAILED ANALYSIS:
-The claim is supported by multiple reputable sources...
-
-📋 SUPPORTING EVIDENCE:
-1. 📰 SOURCE: NASA
-   🎯 STATUS: ✅ SUPPORTS | RELEVANCE: HIGH
-   📝 SUMMARY: NASA confirms water molecules on the sunlit surface of the Moon...
-
-💡 RECOMMENDATIONS FOR READERS:
-Share with confidence, but always check for updates on scientific findings.
-
-⏰ REPORT GENERATED: 2025-06-24
+```python
+# Example MCP tool call
+{
+    "tool": "fact_check_headline",
+    "arguments": {
+        "headline": "NASA announces discovery of water on Mars"
+    }
+}
 ```
 
 ### Get Trending Topics
 
-```
-================================================================================
-                        📈 TRENDING NEWS TOPICS REPORT
-================================================================================
-
-🌍 COVERAGE AREA: INTERNATIONAL/GLOBAL
-⏰ REPORT GENERATED: 2025-06-24
-📊 TOPICS IDENTIFIED: 10
-
- 1. 🔥 Global Markets Rally Amid Economic Recovery
-    📰 SOURCE: Reuters | 📅 06/24/2025 10:00
-    📝 SUMMARY: Stock markets worldwide surged today as...
-    🔗 READ MORE: https://reuters.com/example-article
-
- 2. 🏥 COVID-19 Cases Decline in India
-    📰 SOURCE: Times of India | 📅 06/24/2025 09:30
-    📝 SUMMARY: The number of new COVID-19 cases in India has dropped...
-    🔗 READ MORE: https://timesofindia.indiatimes.com/example-article
-
-... (more topics)
-
-================================================================================
+```python
+# Example MCP tool call
+{
+    "tool": "get_trending_topics",
+    "arguments": {
+        "location": "international"  # or "local", "india"
+    }
+}
 ```
 
----
+## Available Tools
+
+### `fact_check_headline`
+
+Verifies news headlines using AI analysis and web search.
+
+**Parameters:**
+- `headline` (string): The news headline to fact-check
+
+**Returns:**
+- Verdict (TRUE/FALSE/PARTIALLY_TRUE/UNVERIFIED/MISLEADING)
+- Confidence score
+- Truthfulness percentage
+- Supporting and contradicting evidence
+- Recommendations
+
+### `get_trending_topics`
+
+Retrieves current trending news topics.
+
+**Parameters:**
+- `location` (string, optional): "international", "local", or "india" (default: "international")
+
+**Returns:**
+- List of trending topics with titles, sources, and URLs
+
+## Configuration
+
+### Environment Variables
+
+- `GEMINI_API_KEY`: Required Google Gemini API key
+- `NEWS_API_KEY`: Optional NewsAPI key for enhanced search
+- `SEARCH_API_KEY`: Optional additional search API key
+
+### API Keys
+
+1. **Google Gemini**: Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. **NewsAPI** (optional): Get from [NewsAPI](https://newsapi.org/)
+3. **Search API** (optional): Additional search service API key
+
+## Development
+
+### Project Structure
+
+```
+FactChecker/
+├── src/
+│   └── factchck/
+│       └── news_factcheck.py  # Main MCP server
+├── requirements.txt           # Python dependencies
+├── pyproject.toml           # Project configuration
+└── README.md               # This file
+```
+
+### Building
+
+```bash
+# Install in development mode
+pip install -e .
+
+# Run tests (if available)
+python -m pytest
+```
+
+## MCP Integration
+
+This server is compatible with:
+- Claude Desktop
+- MCP CLI
+- Any MCP-compatible client
+
+### Server Configuration
+
+```json
+{
+    "mcpServers": {
+        "news-factcheck": {
+            "command": "python",
+            "args": ["-m", "factchck.news_factcheck"],
+            "env": {
+                "GEMINI_API_KEY": "your_api_key_here"
+            }
+        }
+    }
+}
+```
+
+## Error Handling
+
+The server includes comprehensive error handling for:
+- Missing API keys
+- Network connectivity issues
+- Invalid input validation
+- Service unavailability
+
+## Limitations
+
+- Requires internet connection for web search
+- Depends on Google Gemini API availability
+- RSS feed parsing is simplified (consider using proper XML parser for production)
+- Rate limits may apply to API services
 
 ## Contributing
 
-Contributions are welcome! Please open issues or pull requests for improvements, bug fixes, or new features.
-
----
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+MIT License - see LICENSE file for details.
 
----
+## Version History
 
-## Security
+- **v3.0.0**: Modernized with latest MCP conventions, simplified codebase
+- **v2.1.0**: Previous version with complex multi-source search
+- **v0.1.0**: Initial release
 
-- **Never commit your API keys or secrets.**
-- Review all code and dependencies before deploying in production environments.
+## Support
 
----
-
-## Acknowledgments
-
-- [Model Context Protocol (MCP)](https://github.com/modelcontext/mcp)
-- [Google Gemini](https://ai.google.dev/gemini-api/docs)
-- [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
+For issues and questions:
+1. Check the error logs
+2. Verify API key configuration
+3. Ensure network connectivity
+4. Open an issue on GitHub

@@ -1,0 +1,35 @@
+{
+  "name": "news-factcheck",
+  "description": "A Model Context Protocol server that fact-checks news headlines using web search and Gemini 2.5 Flash.",
+  "entrypoint": "python src/factchck/news_factcheck.py",
+  "tools": [
+    {
+      "name": "fact_check_headline",
+      "description": "Fact-check a news headline using web search and AI analysis",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "headline": {
+            "type": "string",
+            "description": "The news headline to fact-check"
+          }
+        },
+        "required": ["headline"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "factcheck://status",
+      "name": "Fact Checker Status",
+      "description": "Current status of the fact-checking service",
+      "mimeType": "text/plain"
+    }
+  ],
+  "env": [
+    "GEMINI_API_KEY",
+    "NEWS_API_KEY"
+  ],
+  "language": "python",
+  "mcpVersion": "1.0.0"
+} 

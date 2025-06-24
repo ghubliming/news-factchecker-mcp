@@ -1,14 +1,16 @@
 # News Fact-Checker MCP Server
 
-A Model Context Protocol (MCP) server for automated fact-checking of news headlines using web search and Google Gemini AI. This project exposes a tool for verifying the factual accuracy of news claims, suitable for integration with Claude Desktop, the MCP CLI, and other MCP-compatible clients.
+A Model Context Protocol (MCP) server for automated fact-checking of news headlines and retrieving trending news topics using web search and Google Gemini AI. This project exposes tools for verifying the factual accuracy of news claims and for aggregating trending topics, suitable for integration with Claude Desktop, the MCP CLI, and other MCP-compatible clients.
 
 ---
 
 ## Features
 
 - **Fact-check news headlines** using real-time web search and Gemini AI analysis
+- **Trending topics aggregation**: Get the latest trending news by region (local/India/international)
 - **Structured verdicts**: TRUE, FALSE, PARTIALLY_TRUE, UNVERIFIED, MISLEADING
 - **Evidence summary** and confidence score
+- **Professional, detailed reporting**
 - **Easy integration** with Claude Desktop, MCP CLI, and other clients
 
 ---
@@ -39,7 +41,7 @@ A Model Context Protocol (MCP) server for automated fact-checking of news headli
 
 ## Configuration
 
-This server requires API keys for Google Gemini and (optionally) NewsAPI for enhanced news search.
+This server requires API keys for Google Gemini and (optionally) NewsAPI for enhanced news search and trending topics.
 
 1. **Create a `.env` file in the project root:**
    ```env
@@ -98,7 +100,7 @@ The server will start and expose its tools over MCP stdio.
    - **Command:** `python`
    - **Arguments:** `src/factchck/news_factcheck.py`
    - (Set environment variables for API keys as needed)
-2. Restart Claude Desktop. The "Fact Check Headline" tool will appear in the tool menu.
+2. Restart Claude Desktop. The "Fact Check Headline" and "Get Trending Topics" tools will appear in the tool menu.
 
 ---
 
@@ -114,24 +116,66 @@ Call the fact-check tool:
 mcp tool call --server-stdio "python src/factchck/news_factcheck.py" --tool fact_check_headline --args '{"headline": "NASA finds water on the Moon"}'
 ```
 
+Call the trending topics tool:
+```sh
+mcp tool call --server-stdio "python src/factchck/news_factcheck.py" --tool get_trending_topics --args '{"location": "international"}'
+```
+
 ---
 
 ## Example Output
 
-```
-✅ FACT-CHECK RESULT: TRUE
-📊 Confidence: 98.0%
+### Fact-Check Headline
 
-📝 Analysis:
+```
+✅ FINAL VERDICT: TRUE (98% ACCURATE)
+📰 HEADLINE ANALYZED:
+"NASA finds water on the Moon"
+
+📊 VERIFICATION METRICS:
+• Truthfulness Score: 98%
+• AI Confidence Level: 98.0%
+• Sources Analyzed: 3
+• Analysis Date: 2025-06-24
+
+🎯 DETAILED ANALYSIS:
 The claim is supported by multiple reputable sources...
 
-🔍 Evidence Summary:
-1. ✓ NASA: NASA confirms water molecules on the sunlit surface of the Moon...
+📋 SUPPORTING EVIDENCE:
+1. 📰 SOURCE: NASA
+   🎯 STATUS: ✅ SUPPORTS | RELEVANCE: HIGH
+   📝 SUMMARY: NASA confirms water molecules on the sunlit surface of the Moon...
 
-💡 Recommendations:
+💡 RECOMMENDATIONS FOR READERS:
 Share with confidence, but always check for updates on scientific findings.
 
-⏰ Checked: 2024-06-18T12:34:56
+⏰ REPORT GENERATED: 2025-06-24
+```
+
+### Get Trending Topics
+
+```
+================================================================================
+                        📈 TRENDING NEWS TOPICS REPORT
+================================================================================
+
+🌍 COVERAGE AREA: INTERNATIONAL/GLOBAL
+⏰ REPORT GENERATED: 2025-06-24
+📊 TOPICS IDENTIFIED: 10
+
+ 1. 🔥 Global Markets Rally Amid Economic Recovery
+    📰 SOURCE: Reuters | 📅 06/24/2025 10:00
+    📝 SUMMARY: Stock markets worldwide surged today as...
+    🔗 READ MORE: https://reuters.com/example-article
+
+ 2. 🏥 COVID-19 Cases Decline in India
+    📰 SOURCE: Times of India | 📅 06/24/2025 09:30
+    📝 SUMMARY: The number of new COVID-19 cases in India has dropped...
+    🔗 READ MORE: https://timesofindia.indiatimes.com/example-article
+
+... (more topics)
+
+================================================================================
 ```
 
 ---

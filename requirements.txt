@@ -4,3 +4,5 @@ httpx>=0.27.0
 python-dotenv>=1.0.0
 newspaper3k
 lxml[html_clean]
+pytest-asyncio
+python-dotenv

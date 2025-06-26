@@ -37,7 +37,7 @@ export GEMINI_API_KEY="your_gemini_api_key_here"
 
 4. Run the server:
 ```bash
-python -m factchck.news_factcheck
+python -m factcheck.news_factcheck
 ```
 
 ## Usage
@@ -139,19 +139,67 @@ This server is compatible with:
 
 ### Server Configuration
 
+To use this server with an MCP-compatible client, add the following to your `mcp.servers.json`:
+
 ```json
 {
-    "mcpServers": {
-        "news-factcheck": {
-            "command": "python",
-            "args": ["-m", "factchck.news_factcheck"],
-            "env": {
-                "GEMINI_API_KEY": "your_api_key_here"
-            }
-        }
+  "mcpServers": {
+    "news-factcheck": {
+      "command": "python",
+      "args": ["-m", "factcheck.news_factcheck"],
+      "env": {
+        "GEMINI_API_KEY": "your_api_key_here"
+      },
+      "enabled": true
     }
+  }
 }
 ```
+
+- Replace `your_api_key_here` with your actual Google Gemini API key.
+- You may also set optional `NEWS_API_KEY` and `SEARCH_API_KEY` in the `env` section if you have them.
+
+### Example `mcpServers.json` entry
+
+You can configure this Python MCP server in your `mcp.servers.json` just like a Node.js MCP server. Here are two equivalent ways:
+
+**1. Using the script path:**
+
+```json
+{
+  "mcpServers": {
+    "news-factcheck": {
+      "command": "python",
+      "args": ["/absolute/path/to/your/workspace/src/factcheck/news_factcheck.py"],
+      "env": {
+        "GEMINI_API_KEY": "your_api_key"
+      },
+      "enabled": true
+    }
+  }
+}
+```
+
+**2. Using the module form (recommended):**
+
+```json
+{
+  "mcpServers": {
+    "news-factcheck": {
+      "command": "python",
+      "args": ["-m", "factcheck.news_factcheck"],
+      "env": {
+        "GEMINI_API_KEY": "your_api_key"
+      },
+      "enabled": true
+    }
+  }
+}
+```
+
+- Use the **script path** if you want to run the file directly (replace with your actual absolute path).
+- Use the **module form** if your Python environment is set up with the project root in `PYTHONPATH` (recommended for most setups).
+- Add any other required environment variables as needed.
 
 ## Error Handling
 

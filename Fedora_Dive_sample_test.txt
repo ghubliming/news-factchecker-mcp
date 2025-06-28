@@ -1,0 +1,60 @@
+Fedora
+
+Dive 
+
+Sample Test
+
+
+heck if news is true, Munich heat 45 grad today.
+Copy
+
+Edit
+Call:
+
+[
+  {
+    "name": "fact_check_headline",
+    "arguments": {
+      "headline": "Munich heat 45 grad today."
+    }
+  }
+]
+Results:
+
+[
+  {
+    "type": "text",
+    "text": "\n================================================================================\n                      🔍 FACT-CHECK VERIFICATION REPORT\n================================================================================\n\n❓ FINAL VERDICT: UNVERIFIED (0% ACCURATE)\n\n📰 HEADLINE ANALYZED:\n\"Munich heat 45 grad today.\"\n\n📊 VERIFICATION METRICS:\n• Truthfulness Score: 0%\n• AI Confidence Level: 40.0%\n• Sources Analyzed: 1\n• Analysis Date: June 28, 2025 at 23:05 UTC\n\n🎯 DETAILED ANALYSIS:\nThe provided search results explicitly state that detailed information could not be retrieved, indicating a lack of verifiable evidence to either confirm or refute the headline's claim. Therefore, the headline regarding Munich's temperature cannot be fact-checked with the given data.\n\n📋 SUPPORTING EVIDENCE:\n1. 📰 SOURCE: Fallback Search (DuckDuckGo)\n   🎯 STATUS: ❌ CONTRADICTS | RELEVANCE: HIGH\n   📝 SUMMARY: This result indicates an inability to retrieve detailed search results for the query 'Munich heat 45 grad today', making it impossible to verify the headline's claim.\n\n⚠️ IDENTIFIED CONCERNS:\n1. The headline makes an extreme weather claim (45 degrees, likely Celsius, which is very high for Munich) without any supporting evidence provided.\n2. Lack of any verifiable data to confirm or deny the temperature claim.\n\n💡 RECOMMENDATIONS FOR READERS:\nReaders should seek current weather information from official and reliable meteorological sources (e.g., national weather services, reputable news outlets with weather data) to verify extreme temperature claims like this, as the provided information is insufficient.\n\n📈 TRUTHFULNESS SCORE GUIDE:\n• 85-100%: ✅ HIGHLY ACCURATE - Well-supported by evidence\n• 70-84%:  ✅ MOSTLY ACCURATE - Minor inaccuracies or missing context  \n• 50-69%:  ⚠️ PARTIALLY ACCURATE - Mixed truth with significant concerns\n• 30-49%:  ❌ QUESTIONABLE - More false than true elements\n• 0-29%:   ❌ INACCURATE - Predominantly false or misleading\n\n🔍 CONFIDENCE LEVEL GUIDE:\n• 90-100%: Very confident in analysis\n• 70-89%:  Confident with good evidence\n• 50-69%:  Moderate confidence, some uncertainty\n• 30-49%:  Low confidence, limited evidence  \n• 0-29%:   Very uncertain, insufficient data\n\n================================================================================\n⏰ REPORT GENERATED: June 28, 2025 at 23:05 UTC\n🤖 POWERED BY: Google Gemini AI + Multi-Source Web Verification\n================================================================================",
+    "annotations": null
+  }
+]
+The news headline "Munich heat 45 grad today" is UNVERIFIED. The analysis shows a truthfulness score of 0% and a confidence level of 40.0%. The search results did not provide enough information to verify the claim. It is recommended to check official weather sources for accurate information.
+
+
+Copy
+
+Retry
+check if true: all Munich's Hotel cost more than 1000euro in Oktoberfest
+Copy
+
+Edit
+Call:
+
+[
+  {
+    "name": "fact_check_headline",
+    "arguments": {
+      "headline": "all Munich's Hotel cost more than 1000euro in Oktoberfest"
+    }
+  }
+]
+Results:
+
+[
+  {
+    "type": "text",
+    "text": "\n================================================================================\n                      🔍 FACT-CHECK VERIFICATION REPORT\n================================================================================\n\n❓ FINAL VERDICT: UNVERIFIED (50% ACCURATE)\n\n📰 HEADLINE ANALYZED:\n\"all Munich's Hotel cost more than 1000euro in Oktoberfest\"\n\n📊 VERIFICATION METRICS:\n• Truthfulness Score: 50%\n• AI Confidence Level: 90.0%\n• Sources Analyzed: 1\n• Analysis Date: June 28, 2025 at 23:06 UTC\n\n🎯 DETAILED ANALYSIS:\nThe provided search results explicitly state that detailed information to verify the claim regarding hotel costs in Munich during Oktoberfest could not be retrieved. Therefore, it is impossible to confirm or deny the headline's assertion with the given data.\n\n📋 SUPPORTING EVIDENCE:\n1. 📰 SOURCE: Fallback Search\n   🎯 STATUS: ❌ CONTRADICTS | RELEVANCE: HIGH\n   📝 SUMMARY: Indicates that detailed search results for the specific query 'all Munich's Hotel cost more than 1000euro in Oktoberfest' could not be retrieved and recommends manual verification.\n\n⚠️ IDENTIFIED CONCERNS:\n1. The headline makes an absolute claim ('all' hotels, 'more than 1000euro') which is difficult to prove entirely true and might be an exaggeration.\n2. Lack of data to substantiate the claim from the provided search results.\n\n💡 RECOMMENDATIONS FOR READERS:\nReaders should independently check various hotel booking sites for actual prices during Oktoberfest dates in Munich, considering different hotel categories, locations, and booking times, as prices can vary significantly.\n\n📈 TRUTHFULNESS SCORE GUIDE:\n• 85-100%: ✅ HIGHLY ACCURATE - Well-supported by evidence\n• 70-84%:  ✅ MOSTLY ACCURATE - Minor inaccuracies or missing context  \n• 50-69%:  ⚠️ PARTIALLY ACCURATE - Mixed truth with significant concerns\n• 30-49%:  ❌ QUESTIONABLE - More false than true elements\n• 0-29%:   ❌ INACCURATE - Predominantly false or misleading\n\n🔍 CONFIDENCE LEVEL GUIDE:\n• 90-100%: Very confident in analysis\n• 70-89%:  Confident with good evidence\n• 50-69%:  Moderate confidence, some uncertainty\n• 30-49%:  Low confidence, limited evidence  \n• 0-29%:   Very uncertain, insufficient data\n\n================================================================================\n⏰ REPORT GENERATED: June 28, 2025 at 23:06 UTC\n🤖 POWERED BY: Google Gemini AI + Multi-Source Web Verification\n================================================================================",
+    "annotations": null
+  }
+]
+The headline "all Munich's Hotel cost more than 1000euro in Oktoberfest" is UNVERIFIED. The truthfulness score is 50%, with a high confidence level of 90%. The analysis could not retrieve detailed information to verify the claim. It is recommended to check hotel booking sites for actual prices.

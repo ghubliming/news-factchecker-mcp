@@ -1,0 +1,26 @@
+Fedora
+
+Dive
+
+```
+{
+  "mcpServers": {
+    "news-factcheck": {
+      "transport": "stdio",
+      "enabled": true,
+      "command": "python",
+      "args": [
+        "-m",
+        "factcheck.news_factcheck"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "AI....7uU1UwHWgY",
+        "PYTHONPATH": "/home/liu/Documents/news-factchecker-mcp/src"
+      },
+      "url": null,
+      "headers": null
+    }
+  }
+}
+```
+

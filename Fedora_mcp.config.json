@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "news-factcheck": {
+      "transport": "stdio",
+      "enabled": false,
+      "command": "python",
+      "args": [
+        "-m",
+        "factcheck.news_factcheck"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "",
+        "NEWS_API_KEY": "",
+        "PYTHONPATH": "/home/liu/Documents/news-factchecker-mcp/src"
+      },
+      "url": null,
+      "headers": null
+    }
+  }
+}
+

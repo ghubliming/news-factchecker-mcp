@@ -58,3 +58,30 @@ Results:
   }
 ]
 The headline "all Munich's Hotel cost more than 1000euro in Oktoberfest" is UNVERIFIED. The truthfulness score is 50%, with a high confidence level of 90%. The analysis could not retrieve detailed information to verify the claim. It is recommended to check hotel booking sites for actual prices.
+
+
+
+---
+
+
+
+Call:
+
+[
+  {
+    "name": "fact_check_headline",
+    "arguments": {
+      "headline": "Munich got nuked today"
+    }
+  }
+]
+Results:
+
+[
+  {
+    "type": "text",
+    "text": "\n================================================================================\n                      🔍 FACT-CHECK VERIFICATION REPORT\n================================================================================\n\n❌ FINAL VERDICT: FALSE (0% ACCURATE)\n\n📰 HEADLINE ANALYZED:\n\"Munich got nuked today\"\n\n📊 VERIFICATION METRICS:\n• Truthfulness Score: 0%\n• AI Confidence Level: 99.0%\n• Sources Analyzed: 1\n• Analysis Date: June 29, 2025 at 22:04 UTC\n\n🎯 DETAILED ANALYSIS:\nThe provided search result explicitly states 'Unable to retrieve detailed search results' for the query 'Munich got nuked today.' A nuclear attack on a major city is a catastrophic, globally impactful event that would be widely reported by all major news outlets immediately. The complete absence of any supporting information from a search query, coupled with real-world observation, definitively indicates this headline is false.\n\n📋 SUPPORTING EVIDENCE:\n1. 📰 SOURCE: Fallback Search\n   🎯 STATUS: ❌ CONTRADICTS | RELEVANCE: HIGH\n   📝 SUMMARY: The search for 'Munich got nuked today' yielded 'Unable to retrieve detailed search results,' which for such a significant claim, implicitly refutes its occurrence by the complete lack of information.\n\n⚠️ IDENTIFIED CONCERNS:\n1. The headline makes an extremely grave and false claim of a catastrophic event.\n2. Such an event would be universally reported, and the lack of any supporting evidence from a search engine (let alone real-world observation) is proof of its falsehood.\n\n💡 RECOMMENDATIONS FOR READERS:\nReaders should recognize claims of catastrophic events like nuclear attacks as highly improbable without immediate, widespread, and verifiable reporting from multiple credible news sources. Always cross-reference such extraordinary claims with established international news organizations and official government channels before believing or sharing them.\n\n📈 TRUTHFULNESS SCORE GUIDE:\n• 85-100%: ✅ HIGHLY ACCURATE - Well-supported by evidence\n• 70-84%:  ✅ MOSTLY ACCURATE - Minor inaccuracies or missing context  \n• 50-69%:  ⚠️ PARTIALLY ACCURATE - Mixed truth with significant concerns\n• 30-49%:  ❌ QUESTIONABLE - More false than true elements\n• 0-29%:   ❌ INACCURATE - Predominantly false or misleading\n\n🔍 CONFIDENCE LEVEL GUIDE:\n• 90-100%: Very confident in analysis\n• 70-89%:  Confident with good evidence\n• 50-69%:  Moderate confidence, some uncertainty\n• 30-49%:  Low confidence, limited evidence  \n• 0-29%:   Very uncertain, insufficient data\n\n================================================================================\n⏰ REPORT GENERATED: June 29, 2025 at 22:04 UTC\n🤖 POWERED BY: Google Gemini AI + Multi-Source Web Verification\n================================================================================",
+    "annotations": null
+  }
+]
+The fact-check now concludes that the headline "Munich got nuked today" is FALSE (0% accurate) with a 99% confidence level. The analysis is based on the lack of any supporting information from a search query.
